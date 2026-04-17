@@ -1,0 +1,146 @@
+Como passar informações de constantes ou variaves para um componete?, veja o exemplo:
+
+1-primeiro vamos criar o componente que irá receber as informações, vou criar o Dados.js e também usaremos o PROPS para receber estes dados, assim:
+
+import React from 'react'
+
+export default function Dados(props){
+    return(
+        <>
+         <p>Canal: {props.canal()} </p>
+         <p>You tube: {props.yt}</p>
+         <p>Professor: {props.prof}</p>
+        </>
+    )
+}
+
+Explicação:	
+
+1.1- Ele recebe as informações via props e para utilizala basta usar o nome do parametro que foi enviado, no caso aí foram o: "canal",  "yt", "prof".
+
+Agora vamos passar esses parametros para o componente dados, veja como fica:
+
+import React from 'react'
+import Header from './componentes/Header.js'
+import Body from './componentes/Body.js'
+import Dados from './componentes/Dados.js'
+export default function App(){
+
+    const cnl = ()=>{
+        return 'Cfb Cursos'
+    }
+
+    const yt = '@Cfb_Cursos'
+
+    return(        
+        <>
+            <Header/>
+            <Body/>
+            <Dados
+                canal = {cnl}
+                yt = {yt}
+                prof = 'Bruno'
+            />
+        </>
+    )
+}
+
+
+Explicação: Importei o "Dados" e passei para ele as informações atraves de parametros que eu mesmo nomeei, veja que usei 3 formas diferentes de passar as informações:
+
+
+A- uma funcao que retorna um nome
+
+const cnl = ()=>{
+        return 'Cfb Cursos'
+    }
+
+
+B- uma constante que recebe um nome
+
+    const yt = '@Cfb_Cursos'
+
+
+C- atribui diretamente uma string 
+
+ prof = 'Bruno'
+
+
+ficou assim:
+
+
+canal = {cnl}
+ yt = {yt}
+prof = 'Bruno'
+         
+                 
+  
+------------------------------------------------------------------
+
+Importando componente dentro de componente e passando informações, veja exemplo:
+
+1-Vou criar o Body.js dentro da pasta componentes e importar o Dados.js para passar as informações, veja o exemplo:
+
+Body.js
+
+
+import React from 'react'
+import Dados from './Dados.js'
+
+export default function Body(){
+
+    const cnl = ()=>{
+        return 'Cfb Cursos'
+    }
+
+    const yt = '@Cfb_Cursos'
+
+    return(        
+        <>
+            <Dados
+                canal = {cnl}
+                yt = {yt}
+                prof = 'Bruno'
+            />
+        </>
+    )
+}
+ 
+Basta seguir a mesma maneira de definir os nomes dos parametros e passar as informações.
+
+OBS: por o body.js estar na mesma pasta que Dados.js voce só precisa apontar o nome do arquivo na hora da importação, assim:
+
+import Dados from './Dados.js'
+
+2-No Dados.js não muda nada também, ele recebe as informações por props e usa atraves do nome dos parametros, assim:
+
+import React from 'react'
+
+export default function Dados(props){
+    return(
+        <>
+         <p>Canal: {props.cana()l} </p>
+         <p>You tube: {props.yt}</p>
+         <p>Professor: {props.prof}</p>
+        </>
+    )
+}
+
+3-Já no App() principal não se faz mais necessario importar o Dados.js e passar as informações, pois o mesmo já esta sendo utilizado no Body.js, o que faz com que só seja necessario importar o Body.js e o resto dos componentes, veja com fica:
+
+import React from 'react'
+import Header from './componentes/Header.js'
+import Body from './componentes/Body.js'
+
+export default function App(){
+
+    return(        
+        <>
+            <Header/>
+            <Body/>
+        </>
+    )
+}
+
+       
+

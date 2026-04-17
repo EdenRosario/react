@@ -1,0 +1,55 @@
+criando componentes e importando
+
+crie uma pasta chamada componentes e dentro dela criei um arquivo .js chamado Header, depois faça os passos a seguir:
+
+1-vamos criar um cabeçalho, veja o exemplo:
+
+import React from 'react'
+import Logo from './img/logo.png'
+
+export default function Header(){
+    return(
+        <header>
+            <img src = {Logo}/>
+            <h1>Testando import de componentes</h1>
+        </header>
+    )
+}
+
+
+vai seguir o meu jeito de criação do App() principal
+
+
+
+2-agora vamos criar mais um componente .js na pasta chamado Bory, veja o exemplo:
+
+import React from 'react'
+
+export default function Body(){
+    return(
+        <section>
+           <p>
+            curso de react para iniciantes
+           </p>
+        </section>
+    )
+}
+
+
+3- Agora vamos importar esses componentes no App() principal e usalos, veja o exemplo:
+
+
+import React from 'react'
+import Header from './componentes/Header.js'
+import Body from './componentes/Body.js'
+
+export default function App(){
+    return(
+        <>
+            <Header/>
+            <Body/>
+        </>
+    )
+}
+
+

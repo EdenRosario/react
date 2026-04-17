@@ -1,0 +1,50 @@
+Passagem de funcoes nos componentes, veja o exemplo:
+
+1-Vamos criar uma funcao de soma em nosso App() principal e passar ela como atributo para outro componente esperando parametros deste componente, veja o exemplo:
+
+No App.jsx faça:
+
+import React from 'react'
+import Dados from './Dados.js'
+
+export default function App(){
+
+    const somar = (n1,n2)=>{
+        return n1 + n2
+    }    
+
+    return(        
+        <>
+            <Header/>
+            <Body/>
+            <Dados 
+                somar={somar}
+            />
+        </>
+    )
+}
+
+
+Explicação:
+
+Criei a funcao de somar e passei para o Dados.js e lá vou enviar os valores que desejo somar, fica assim:
+
+No Dados.js faça:
+
+import React from 'react'
+
+export default function Dados(props){
+
+    let n1 = 20
+    let n2 = 30
+
+    return(
+        <>
+         <p>{`a soma entre ${n1} e ${n2} é igual a ${props.somar(n1,n2)}`}</p>
+        </>
+    )
+}
+
+Passei para minha funcao os valores das variaves n1 e n2
+
+
