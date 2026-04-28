@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-
+import React, {useState} from "react";
+import Leds from "./components/Leds";
+import './App.css'
 export default function App() {
-  const [num, setNum] = useState(0);
-
-  console.log("Valor atual do state:", num);
+  
+  const [led, setLed]= useState(false)
 
   return (
     <>
-      <div style={{ margin: "auto" }}>
-        <p>valor do state num: {num}</p>
-        <button onClick={() => setNum(num + 10)}>somar 10</button>
-      </div>
+    <Leds
+      led={led}
+      setLed={setLed}
+    />
     </>
   );
 }
- 

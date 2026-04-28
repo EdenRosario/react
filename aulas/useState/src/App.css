@@ -1,0 +1,17 @@
+.ledVerde{
+
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+
+}
+
+.ledVermelho{
+
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+
+}

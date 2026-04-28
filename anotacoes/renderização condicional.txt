@@ -1,0 +1,46 @@
+primeiro vamos criar o componente Led.js que exibirá verde ou vermelho para ligado ou desligado
+
+
+
+import React from 'react'
+import ledVerde from './img/led_verd.png'
+import ledVermelho from './img/led_vermelho.png'
+
+export default function Led(props){
+    return(
+        <>
+            <img style={{width:'50px'}} src={props.ligado?ledVerde:ledVermelho}/>
+
+            <button onClick={()=>props.setLigado(!props.ligado)}>
+                {props.ligado?'Desligar':'Ligar'}
+            </button>
+        </>
+    )
+}
+
+para o componente pai "App" eu mando o o ligado com o  valor invertido "  <button onClick={()=>props.setLigado(!props.ligado)}> " e la eu faço a tratativa do state
+
+
+no App.js:
+
+
+import React, {useState} from 'react'
+import './App.css'
+import Led from './componentes/Led'
+
+export default function App() {
+    
+    const [ligado, setLigado] = useState(false)
+
+    return (
+        <>
+        <Led
+            ligado={ligado}
+            setLigado={setLigado}
+        />
+        </>
+    )
+}
+
+
+Eu passo para o led o state e la no led eu uso atraves do props
